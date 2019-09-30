@@ -10,28 +10,47 @@ import static org.junit.Assert.assertEquals;
 
 public class FoodOrderTest {
 
-    @Test
-    public void getPrice() {
-        int expectedItemsPrice = 48;
-        int expectedUrbanPrice = expectedItemsPrice + 10;
-        int expectedSuburbanPrice = expectedItemsPrice + 15;
-        int expectedExtraurbanPrice = expectedItemsPrice + 20;
+    private FoodOrder foodOrder;
+    private int expectedUrbanPrice;
+    private int expectedSuburbanPrice;
+    private int expectedExtraurbanPrice;
 
-        assertEquals(expectedUrbanPrice, getUrbanFoodOrder().getPrice());
-        assertEquals(expectedSuburbanPrice, getSuburbanFoodOrder().getPrice());
-        assertEquals(expectedExtraurbanPrice, getExtraurbanFoodOrder().getPrice());
+    @Before
+    public void setUp() {
+        int expectedItemsPrice = 48;
+        expectedUrbanPrice = expectedItemsPrice + 10;
+        expectedSuburbanPrice = expectedItemsPrice + 15;
+        expectedExtraurbanPrice = expectedItemsPrice + 20;
+    }
+
+    @Test
+    public void getUrbanPrice() {
+        foodOrder = getUrbanFoodOrder();
+        assertEquals(expectedUrbanPrice, foodOrder.getPrice());
+    }
+
+    @Test
+    public void getSuburbanPrice() {
+        foodOrder = getSuburbanFoodOrder();
+        assertEquals(expectedSuburbanPrice, foodOrder.getPrice());
+    }
+
+    @Test
+    public void getExtraurbanPrice() {
+        foodOrder = getExtraurbanFoodOrder();
+        assertEquals(expectedExtraurbanPrice, foodOrder.getPrice());
     }
 
     private FoodOrder getUrbanFoodOrder() {
         return new FoodOrder(getItems(), DeliveryType.URBAN);
     }
 
-    private FoodOrder getExtraurbanFoodOrder() {
-        return new FoodOrder(getItems(), DeliveryType.EXTRAURBAN);
-    }
-
     private FoodOrder getSuburbanFoodOrder() {
         return new FoodOrder(getItems(), DeliveryType.SUBURBAN);
+    }
+
+    private FoodOrder getExtraurbanFoodOrder() {
+        return new FoodOrder(getItems(), DeliveryType.EXTRAURBAN);
     }
 
     private List<Item> getItems() {
