@@ -10,8 +10,6 @@ import static org.junit.Assert.assertEquals;
 
 public class FoodOrderTest {
 
-    private FoodOrder foodOrder;
-
     @Test
     public void getPrice() {
         int expectedItemsPrice = 48;
@@ -24,16 +22,16 @@ public class FoodOrderTest {
         assertEquals(expectedExtraurbanPrice, getExtraurbanFoodOrder().getPrice());
     }
 
+    private FoodOrder getUrbanFoodOrder() {
+        return new FoodOrder(getItems(), DeliveryType.URBAN);
+    }
+
     private FoodOrder getExtraurbanFoodOrder() {
         return new FoodOrder(getItems(), DeliveryType.EXTRAURBAN);
     }
 
     private FoodOrder getSuburbanFoodOrder() {
         return new FoodOrder(getItems(), DeliveryType.SUBURBAN);
-    }
-
-    private FoodOrder getUrbanFoodOrder() {
-        return new FoodOrder(getItems(), DeliveryType.URBAN);
     }
 
     private List<Item> getItems() {

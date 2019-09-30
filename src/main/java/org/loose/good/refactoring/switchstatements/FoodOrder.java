@@ -34,12 +34,4 @@ public class FoodOrder {
         }
         return price;
     }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public DeliveryType getDeliveryType() {
-        return deliveryType;
-    }
 }
