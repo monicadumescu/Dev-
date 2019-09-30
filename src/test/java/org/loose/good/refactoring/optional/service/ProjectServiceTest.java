@@ -20,13 +20,11 @@ import static org.junit.Assert.assertTrue;
 
 public class ProjectServiceTest {
 
-    public static final String EXISTING_PROJECT_ID = "demo";
-    public static final String NON_EXISTING_PROJECT_ID = "nothing";
+    private static final String EXISTING_PROJECT_ID = "demo";
+    private static final String NON_EXISTING_PROJECT_ID = "nothing";
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
 
     private ProjectService projectService;
 
@@ -91,7 +89,7 @@ public class ProjectServiceTest {
         assertEquals(-1, numberOfFilesInProject);
     }
 
-    private class TestProjectRepository implements ProjectRepository {
+    private static class TestProjectRepository implements ProjectRepository {
 
         @Override
         public Project getProjectByID(String projectID) {
@@ -102,8 +100,8 @@ public class ProjectServiceTest {
         }
     }
 
-    private class TestProjectCreator {
-        public static final String DEMO_PROJECT_NAME = "Demo project Name";
+    private static class TestProjectCreator {
+        static final String DEMO_PROJECT_NAME = "Demo project Name";
         private String projectID;
 
         private Author john = new Author("John Doe", "john.doe@email.com");

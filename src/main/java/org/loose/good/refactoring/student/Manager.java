@@ -16,18 +16,20 @@ public class Manager {
         }
 
         for (int i = 0; i < personList.size(); i++) {
-            Person s = personList.get(i);
-            String name = s.getFirstName() + " " + s.getLastName();
-            stringList.add(name);
+            Person p = personList.get(i);
+            String s1 = p.getFirstName() + " " + p.getLastName();
+            stringList.add(s1);
         }
 
-        for (int i = 0; i < stringList.size(); i++)
-            for (int j = i; j < stringList.size(); j++)
+        for (int i = 0; i < stringList.size(); i++) {
+            for (int j = i; j < stringList.size(); j++) {
                 if (stringList.get(i).compareToIgnoreCase(stringList.get(j)) > 0) {
                     String aux = stringList.get(j);
                     stringList.set(j, stringList.get(i));
                     stringList.set(i, aux);
                 }
+            }
+        }
 
         for (String s : stringList) System.out.println(s);
 
